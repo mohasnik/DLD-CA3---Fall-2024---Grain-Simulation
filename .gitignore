@@ -1,0 +1,5 @@
+.vscode/settings.json
+*.py
+.vscode/
+build/
+MD5

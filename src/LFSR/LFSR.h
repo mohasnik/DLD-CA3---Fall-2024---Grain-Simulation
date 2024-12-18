@@ -7,14 +7,19 @@ class LFSR
 private:
     uint80_t* reg;
     
-    uint8_t F();
 
 public:
     LFSR();
     LFSR(uint64_t seed);
+    LFSR(uint80_t seed);
+
+    ~LFSR();
+
+    uint80_t getValue() { return *this->reg; }
+    
+    uint8_t F();
 
     uint8_t execute();
-    ~LFSR();
 };
 
 

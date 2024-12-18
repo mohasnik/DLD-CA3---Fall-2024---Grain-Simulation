@@ -10,6 +10,11 @@ LFSR::LFSR(uint64_t seed) {
     this->reg = new uint80_t(seed, 0);
 }
 
+LFSR::LFSR(uint80_t seed) {
+    this->reg = new uint80_t();
+    *this->reg = seed;
+}
+
 LFSR::~LFSR() {
     delete this->reg;
 }

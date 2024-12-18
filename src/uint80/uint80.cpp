@@ -161,3 +161,4 @@ uint80_t uint80_t::operator|(uint80_t other) {
     return uint80_t(this->lower | other.lower, this->upper | other.upper);
     
 }
+

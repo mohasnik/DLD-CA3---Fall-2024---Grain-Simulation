@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include <string>
+#include <iomanip>
 #include "stdio.h"
 
 class uint80_t
@@ -34,8 +35,16 @@ class uint80_t
 
     uint80_t operator|(uint80_t other);
 
+    friend std::ostream& operator<<(std::ostream& os, const uint80_t& obj);
+
     ~uint80_t();
 };
 
+std::ostream& operator<<(std::ostream& os, const uint80_t& obj) {
+    os << "0x" << std::hex << std::setw(4) << std::setfill('0') << obj.upper;
+    os << std::hex << std::setw(16) << std::setfill('0') << obj.lower;
+
+    return os;
+}
 
 #endif

@@ -17,9 +17,11 @@ class uint80_t
 
     uint80_t();
 
-    uint80_t(std::string bitStr);
+    uint80_t(std::string bitStr, bool isBinary = true);
 
     uint80_t(uint64_t lower, uint16_t upper);
+
+    uint80_t(const uint80_t& other);
 
     uint16_t upperValue() { return this->upper; }
     uint64_t lowerValue() { return this->lower; }

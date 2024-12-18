@@ -7,24 +7,43 @@ uint80_t::uint80_t() {
     this->upper = 0;
 }
 
-uint80_t::uint80_t(std::string bitStr) {
-    this->upper = 0;
-    this->lower = 0;
+uint80_t::uint80_t(std::string bitStr, bool isbinary) {
 
-    for(int i = 0; i < 80; i++) {
-        uint64_t val = bitStr[i] - '0';
-        
-        if(val != 0 && val != 1) {
-            throw "Invalid char in bit stirng!";
-        }
-        else {
-            if(i  < 16) {
-                uint16_t v = val;
-                this->upper |= (v << (15 -i));
+    if(isbinary) {
+        this->upper = 0;
+        this->lower = 0;
+
+        for(int i = 0; i < 80; i++) {
+            uint64_t val = bitStr[i] - '0';
+            
+            if(val != 0 && val != 1) {
+                throw "Invalid char in bit stirng!";
             }
-            else
-                this->lower |= (val << (63- (i-16)));
+            else {
+                if(i  < 16) {
+                    uint16_t v = val;
+                    this->upper |= (v << (15 -i));
+                }
+                else
+                    this->lower |= (val << (63- (i-16)));
+            }
         }
+    }
+    else {
+
+        if (bitStr.size() < 20) {
+            bitStr = std::string(20 - bitStr.size(), '0') + bitStr;
+        }
+
+        std::string hexStr = bitStr;
+
+        std::string truncatedHex = hexStr.substr(hexStr.size() - 20);
+
+        std::string upperHex = truncatedHex.substr(0, 4); // First 4 characters for the upper (16 bits)
+        std::string lowerHex = truncatedHex.substr(4);    // Remaining 16 characters for the lower (64 bits)
+
+        this->upper = static_cast<uint16_t>(std::stoul(upperHex, nullptr, 16));
+        this->lower = static_cast<uint64_t>(std::stoull(lowerHex, nullptr, 16));
     }
     
 }
@@ -32,6 +51,12 @@ uint80_t::uint80_t(std::string bitStr) {
 uint80_t::uint80_t(uint64_t lower, uint16_t upper) {
     this->lower = lower;
     this->upper = upper;
+}
+
+
+uint80_t::uint80_t(const uint80_t& other) {
+    this->lower = other.lower;
+    this->upper = other.upper;
 }
 
 // uint80_t uint80_t::operator>>(int shiftAmnt) {

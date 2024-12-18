@@ -6,18 +6,32 @@ uint24_t::uint24_t() {
     this->val = 0;
 }
 
-uint24_t::uint24_t(std::string bitStr) {
+uint24_t::uint24_t(std::string bitStr, bool isBinary = true) {
     this->val = 0;
-
-    for(int i = 0; i < 24; i++) {
-        uint32_t val = bitStr[i] - '0';
+    
+    if(isBinary) {
+        for(int i = 0; i < 24; i++) {
+            uint32_t val = bitStr[i] - '0';
+            
+            if(val != 0 && val != 1) {
+                throw "Invalid char in bit stirng!";
+            }
+            else {
+                this->val |= (val << (23 -i));          
+            }
+        }
+    }
+    else {
+        if (bitStr.size() < 6) {
+            bitStr = std::string(6 - bitStr.size(), '0') + bitStr;
+            // printf("im here : %s\n", bitStr.c_str());
+        }
         
-        if(val != 0 && val != 1) {
-            throw "Invalid char in bit stirng!";
-        }
-        else {
-            this->val |= (val << (23 -i));          
-        }
+
+        std::string hexStr = std::string(2, '0') + bitStr.substr(0,6);
+
+        this->val = static_cast<uint32_t>(std::stoul(hexStr, nullptr, 16));
+
     }
     
 }
@@ -59,6 +73,6 @@ uint24_t uint24_t::operator|(uint24_t other) {
 }
 
 std::ostream& operator<<(std::ostream& os, const uint24_t& obj) {
-    os << "0x" << std::hex << std::setw(4) << std::setfill('0') << obj.val;
+    os << "0x" << std::hex << std::setw(6) << std::setfill('0') << obj.val;
     return os;
 }

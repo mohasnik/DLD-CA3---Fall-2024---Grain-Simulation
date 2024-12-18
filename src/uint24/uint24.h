@@ -16,7 +16,7 @@ class uint24_t
 
     uint24_t();
 
-    uint24_t(std::string bitStr);
+    uint24_t(std::string bitStr, bool isBinary);
 
     uint24_t(uint32_t initVal);
 

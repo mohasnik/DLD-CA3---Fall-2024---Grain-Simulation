@@ -6,7 +6,29 @@ Grain::Grain() {
     nfsr = new NFSR();
 }
 
+Grain::Grain(std::string seedHex) {
+    if(seedHex.size() < 26) {
+        seedHex = std::string(26 - seedHex.size(), '0') + seedHex;
+    }
+
+    std::string lfsrSeed = seedHex.substr(6, 26);
+    std::string nfsrSeed = seedHex.substr(0, 6);
+
+    printf("NFSR seed : %s\n", nfsrSeed.c_str());
+    printf("LFSR seed : %s\n", lfsrSeed.c_str());
+
+    this->lfsr = new LFSR(uint80_t(lfsrSeed, false));
+    this->nfsr = new NFSR(uint24_t(nfsrSeed, false));
+
+
+}
+
 Grain::Grain(uint24_t nfsrSeed, uint80_t lfsrSeed) {
+    lfsr = new LFSR(lfsrSeed);
+    nfsr = new NFSR(nfsrSeed);
+}
+
+Grain::Grain(uint64_t nfsrSeed, uint64_t lfsrSeed) {
     lfsr = new LFSR(lfsrSeed);
     nfsr = new NFSR(nfsrSeed);
 }

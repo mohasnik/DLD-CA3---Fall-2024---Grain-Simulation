@@ -20,6 +20,8 @@ public:
     uint8_t F();
 
     uint8_t execute();
+
+    uint8_t manualExecute(uint8_t serIn);
 };
 
 

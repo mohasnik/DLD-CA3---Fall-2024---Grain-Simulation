@@ -3,3 +3,4 @@
 .vscode/
 build/
 MD5
+*.log

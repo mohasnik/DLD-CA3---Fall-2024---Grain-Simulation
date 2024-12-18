@@ -33,3 +33,14 @@ uint8_t LFSR::execute() {
     
     return result;
 }
+
+
+uint8_t LFSR::manualExecute(uint8_t serIn) {
+    uint8_t result = (*this->reg)[0];
+
+    *this->reg  = *this->reg >> 1;
+    
+    *this->reg  = *this->reg | uint80_t(0, serIn<<15);
+    
+    return result;
+}

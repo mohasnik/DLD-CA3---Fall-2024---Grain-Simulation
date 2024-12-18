@@ -2,7 +2,7 @@ CC = g++
 CFLAGS = --std=c++11
 SRC_DIR = src
 BUILD_DIR = build
-MODULES := uint80 LFSR
+MODULES := uint80 LFSR uint24 NFSR
 MAIN_SRC := $(SRC_DIR)/test.cpp
 OUTPUT_DIR := output
 

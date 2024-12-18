@@ -103,6 +103,11 @@ int main(int argc, char* argv[]) {
 
     argumentParser(argc, argv);
 
+
+    // uint24_t nfsr("10eba8", false);
+    // printf("%x\n", nfsr.value());
+
+
     // uint80_t x("00110110010111010101010101000011011010000001011101101010000010111000100100010101");
 
     // Grain grain(1127, 22169718);

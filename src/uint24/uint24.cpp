@@ -24,11 +24,11 @@ uint24_t::uint24_t(std::string bitStr, bool isBinary = true) {
     else {
         if (bitStr.size() < 6) {
             bitStr = std::string(6 - bitStr.size(), '0') + bitStr;
-            // printf("im here : %s\n", bitStr.c_str());
         }
         
 
         std::string hexStr = std::string(2, '0') + bitStr.substr(0,6);
+        printf("%s\n", hexStr.c_str());
 
         this->val = static_cast<uint32_t>(std::stoul(hexStr, nullptr, 16));
 
@@ -38,7 +38,7 @@ uint24_t::uint24_t(std::string bitStr, bool isBinary = true) {
 
 
 uint24_t::uint24_t(uint32_t initVal) {
-    this->val = initVal & ((1<<25) - 1);
+    this->val = initVal & ((1<<24) - 1);
 }
 
 uint24_t uint24_t::operator>>(int shiftAmnt) {
@@ -55,7 +55,7 @@ uint24_t& uint24_t::operator>>=(int shiftAmnt) {
 }
 
 uint24_t& uint24_t::operator<<=(int shiftAmnt) {
-    this->val = ((this->val << shiftAmnt) & ((1 << 25)-1));
+    this->val = ((this->val << shiftAmnt) & ((1 << 24)-1));
 
     return *this;
 }

@@ -20,7 +20,7 @@ class uint24_t
 
     uint24_t(uint32_t initVal);
 
-    uint16_t value() { return this->val; }
+    uint32_t value() { return this->val; }
     
 
     uint24_t operator>>(int shiftAmnt);

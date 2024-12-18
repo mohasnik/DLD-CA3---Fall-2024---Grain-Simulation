@@ -22,10 +22,10 @@ NFSR::~NFSR() {
 uint8_t NFSR::g() {
     return (
             (*this->reg)[0] ^ (*this->reg)[5] ^ (*this->reg)[6] ^ (*this->reg)[9] ^ (*this->reg)[17] ^ (*this->reg)[22] 
-            ^ (((*this->reg)[4]) & ((*this->reg)[13]) & 0x1) 
-            ^ (((*this->reg)[8]) & ((*this->reg)[16]) & 0x1) 
-            ^ (((*this->reg)[5]) & ((*this->reg)[11]) & ((*this->reg)[14]) & 0x1) 
-            ^ (((*this->reg)[2]) & ((*this->reg)[5]) & ((*this->reg)[8]) & ((*this->reg)[10]) & 0x1)
+            ^ (((*this->reg)[4]) & ((*this->reg)[13])) 
+            ^ (((*this->reg)[8]) & ((*this->reg)[16])) 
+            ^ (((*this->reg)[5]) & ((*this->reg)[11]) & ((*this->reg)[14])) 
+            ^ (((*this->reg)[2]) & ((*this->reg)[5]) & ((*this->reg)[8]) & ((*this->reg)[10]))
             )  & 0x1;
 }
 

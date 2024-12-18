@@ -46,7 +46,7 @@ uint24_t uint24_t::operator>>(int shiftAmnt) {
 }
 
 uint24_t uint24_t::operator<<(int shiftAmnt) {
-    return uint24_t(this->val<<shiftAmnt);
+    return uint24_t((this->val<<shiftAmnt) & ((1 << 24) - 1));
 }
 
 uint24_t& uint24_t::operator>>=(int shiftAmnt) {

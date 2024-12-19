@@ -23,10 +23,10 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 
 # Clean target
 clean:
-	rm -rf $(BUILD_DIR) garin
+	rm -rf $(BUILD_DIR) grain
 
 clean_all:
-	rm -rf $(BUILD_DIR) garin $(OUTPUT_DIR)
+	rm -rf $(BUILD_DIR) grain $(OUTPUT_DIR)
 
 # PHONY targets
 .PHONY: output clean

@@ -28,7 +28,6 @@ uint24_t::uint24_t(std::string bitStr, bool isBinary = true) {
         
 
         std::string hexStr = std::string(2, '0') + bitStr.substr(0,6);
-        printf("%s\n", hexStr.c_str());
 
         this->val = static_cast<uint32_t>(std::stoul(hexStr, nullptr, 16));
 

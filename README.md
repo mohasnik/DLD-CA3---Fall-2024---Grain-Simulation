@@ -3,12 +3,6 @@
 
 This project is a grain simulation developed as part of the Digital Logic Design course (CA3) for Fall 2024. This repository contains the C++ implementation of Grain, LFSR, and NFSR, designed to serve as a golden model for HDL simulation.
 
-## Features
-
-- Simulates grain growth behavior over time.
-- Implements key algorithms for modeling grain dynamics.
-- Provides modular and extendable code for experimenting with grain simulation parameters.
-
 ## Repository Structure
 
 ### Source Code (`src/`)
